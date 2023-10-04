@@ -22,6 +22,10 @@
 
 <p id="result">Right/Wrong? </p>
 
+<div>
+    <img id="city" src="Delhi.jpeg" width="100" height="100" onclick="selectImage()">
+</div>
+
 <script> 
 
 var good=0;
@@ -45,6 +49,27 @@ function checkAuthor (){
         out.innerHTML= `Wrong Guess:oops  ${oops}`;
     }
 }
+
+useImage = 1;
+
+        function selectImage() {
+            switch (useImage) {
+                case 1:
+                    document.getElementById('city').src ="Andhrapradesh.jpg";
+                    useImage = 2;
+                    break;
+                case 2:
+                    document.getElementById('city').src ="Nagaland.jpg";
+                    useImage = 3;
+                    break;
+                case 3:
+                    document.getElementById('city').src ="Delhi.jpeg";
+                    useImage = 1;
+                    break;
+                default:
+                    break;
+            }
+        }
 
 </script>
 
