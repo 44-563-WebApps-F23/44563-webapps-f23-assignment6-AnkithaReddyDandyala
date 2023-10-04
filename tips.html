@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+ <head><title>Tips on cruise</title></head>
+<body>
+
+<h2>Ankitha Reddy Dandyala shows tip amounts</h2>
+
+<form>
+    <label for="form1base">Enter base amount </label>
+    <input type="number" id="form1base" name="form1base" value="50"><br><br>
+
+    <label for="form1tipPercent">Enter the tip percent </label>
+    <input type="number" id="form1tipPercent" name="form1tipPercent" value="15"><br><br>
+</form>
+
+<button onclick="tips()">Show tip</button>
+
+<p id="result"></p>
+
+<form>
+    <input type="radio" id="calculateSum" name="operation" value="sum" onclick="chooseOp()">
+    <label for="calculateSum">sum</label><br>
+ 
+    <input type="radio" id="calculateDiff" name="operation" value="difference" onclick="chooseOp()">
+    <label for="calculateDiff">diff</label><br>
+ 
+    <input type="radio" id="calculateMult" name="operation" value="product" onclick="chooseOp()">
+    <label for="calculateMult">mult</label><br>
+</form>
+
+  <p id="CalculateResult"></p>
+<script>
+
+function tips() {
+        const baseValue = parseFloat(document.getElementById('form1base').value);
+        const tipPercent = parseFloat(document.getElementById('form1tipPercent').value);
+            let myOutput="";
+            let toShow= "";
+
+            for (let i = 0; i < 5; i++) {
+                const tipLevel = tipPercent + i * 4;
+                const calculatedTip = (baseValue * tipLevel) / 100;
+                toShow += `${tipLevel}% is ${calculatedTip.toFixed(1)}; `;
+            }
+
+            myOutput = `Tips are: ${toShow}`;
+
+            document.getElementById('result').textContent = myOutput;
+        }
+
+   
+function chooseOp() {
+       
+        const operation = document.querySelector('input[name="operation"]:checked').value;
+       
+        const baseOp = parseFloat(document.getElementById('form1base').value);
+        const tipOp = parseFloat(document.getElementById('form1tipPercent').value);
+       
+        let calculatedResult;
+
+        switch (operation) {
+       case "sum":
+                calculatedResult = `Sum of ${baseOp} and ${tipOp} is ${baseOp + tipOp}`;
+                    break;
+                case "difference":
+                calculatedResult = `Difference between ${baseOp} and ${tipOp} is ${baseOp - tipOp}`;
+                    break;
+                case "product":
+                calculatedResult = `Product of ${baseOp} and ${tipOp} is ${baseOp * tipOp}`;
+                    break;
+                default:
+                calculatedResult = "Please select Either Sum or Difference or Multiplication";
+            }
+
+            document.getElementById('CalculateResult').textContent = `${calculatedResult}`;
+    }
+</script>
+
+</body>
+</html>
